@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(uuid()) @map("_id")
+  index         Int
+  name          String   @unique
+  password      String   @unique
+  isOp          Boolean
+  scoreGiven    Score[] @relation("MyScore")
+  scoreReceived Score[]
+}
+
+model Score {
+  id           String    @id @default(uuid()) @map("_id")
+  fromRelation User      @relation("MyScore", fields: [from], references: [id])
+  from         String
+  toRelation   User      @relation(fields: [to], references: [id])
+  to           String
+  type         ScoreType
+  value  Int?
+}
+
+enum ScoreType {
+  MEETING
+  CHATXAM
+  DEADLINE
+  CHITIEU
+  NANGNO
+  CONGBANG
+  GUONGMAU
+  LANGNGHE
+  FEEDBACK
+}
