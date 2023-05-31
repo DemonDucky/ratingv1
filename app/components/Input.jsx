@@ -13,7 +13,7 @@ export default function Input({data, isMe, isDisabled = false, givenName, scoreT
             getAllScore.forEach(value => {
                 if (value?.type === scoreType) myScore += value.value
             })
-            setScore(myScore / size >= 0 ? myScore / size : "")
+            setScore(myScore / size >= 0 ? (myScore / size).toFixed(2) : "")
         }
     }, [])
 
