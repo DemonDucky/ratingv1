@@ -20,5 +20,6 @@ export default function Validate() {
 export async function action({ request }) {
     const form = await request.formData()
     const data = Object.fromEntries(form)
+
     return await login(data.password)
 }

@@ -1,4 +1,4 @@
-import { createCookieSessionStorage, redirect } from '@remix-run/node'
+import {createCookieSessionStorage, json, redirect} from '@remix-run/node'
 import { prisma } from './database.server'
 
 const session = process.env.SESSION_SECRET
@@ -40,5 +40,7 @@ export async function login(password) {
 
     if (user !== null) {
         return createUserSession(user.id)
+    } else {
+        return json({message: "Tài khoản không tồn tại"})
     }
 }

@@ -33,8 +33,7 @@ export default function Index() {
                 'hide-scrollbar [&::-webkit-scrollbar]:hidden overflow-scroll p-4 flex flex-col h-screen bg-[#F9E0BB]'
             }
         >
-            <ToastContainer
-            />
+            <ToastContainer/>
             <div className={'text-2xl font-bold text-center text-[#884A39] mb-4'}>
                 <h1>MIN - Rating System</h1>
             </div>
