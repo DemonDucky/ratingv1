@@ -8,7 +8,7 @@ export default function Input({data, isMe, isDisabled = false, givenName, scoreT
         if (isMe) {
             var myScore = 0
 
-            const getAllScore = data?.filter((value) => value?.type === scoreType)
+            const getAllScore = data?.filter((value) => value?.type === scoreType && value?.value !== null)
             const size = getAllScore?.length
             getAllScore.forEach(value => {
                 if (value?.type === scoreType) myScore += value.value
