@@ -7,7 +7,6 @@ import {prisma} from '../data/database.server'
 import QueryString from 'qs'
 import {getUserFromSession} from '../data/auth.server'
 import {ToastContainer, toast} from 'react-toastify'
-import {useState} from "react";
 
 export const meta = () => {
     return [{title: 'MIN - Rating System'}, {name: 'description', content: 'Only for members'}]
@@ -31,6 +30,7 @@ export default function Index() {
 
     const submit = async () => {
         try {
+            await actionData
             toast.info('Cập nhật điểm thành công', option);
         } catch (error) {
             toast.error('Có lỗi xảy ra, hãy kiểm tra đường truyền mạng', option);
